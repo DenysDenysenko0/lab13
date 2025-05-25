@@ -75,3 +75,38 @@ except Exception as e:
     print(f"Помилка при записуванні у CSV файл: {e}")
 
 # Кінець коду Кубуши Олексія
+
+# Код Бобирєвої Тетяни (Зчитування CSV файлу Кубуши, додавання нових рядків та запис у новий JSON файл)
+# Імена файлів
+csv_file2 = "kubcsv.csv"
+json_file2 = "tanjson.json"
+
+# Нові рядки для запису
+dany2 = [
+    {"Ім'я": "Тетяна", "Предмет": "Вища математика", "Оцінка": 95},
+    {"Ім'я": "Тетяна", "Предмет": "Дискретна математика", "Оцінка": 100},
+    {"Ім'я": "Тетяна", "Предмет": "Програмування", "Оцінка": 95},
+]
+
+# Читання CSV файлу
+try:
+    with open(csv_file2, mode='r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        rows = list(reader)
+except FileNotFoundError:
+    print("CSV файл не знайдено")
+    rows = []
+
+# Додаємо нові рядки
+rows.extend(dany2)
+print(f"Нові рядки додано")
+
+# Запис у JSON файл
+try:
+    with open(json_file2, mode='w', encoding='utf-8') as file:
+        json.dump(rows, file, indent=4, ensure_ascii=False)
+    print("JSON файл Тетяни створено")
+except Exception as e:
+    print(f"Помилка при записуванні у JSON файл: {e}")
+    
+# Кінець коду Бобирєвой Тетяни
